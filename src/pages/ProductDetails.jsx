@@ -1,3 +1,4 @@
+import Header from "../components/Header";
 export const ProductDetails = () => {
-  return <div>ProductDetails</div>;
+  return <Header />;
 };

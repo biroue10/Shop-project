@@ -1,3 +1,10 @@
+import Header from "../components/Header";
 export const ShoppingCartPage = () => {
-  return <div>ShoppingCartPage</div>;
+  return(
+<div>
+  <Header />
+  ShoppingCartPage
+  </div>
+  )
+  
 };
