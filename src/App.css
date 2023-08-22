@@ -47,10 +47,22 @@
   box-sizing: border-box;
 }
 li::after{
-  transition: opacity 300ms, transform 300ms;
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
-ul > li:hover{
-text-decoration: underline;
-opacity: 1;
-  transform: translate3d(0, 0.2em, 0);
+ul > li:hover::after{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+li{
+  display: inline-block;
+  position: relative;
 }
