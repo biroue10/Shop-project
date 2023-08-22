@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function Header() {
   return (
-    <div className="flex items-center gap-x-20 px-5 py-10 justify-center">
-      <div className="font-extrabold text-2xl">sneakers</div>
+    <div className="flex items-center gap-x-20 px-5 py-10 justify-center border-b-2	">
+    <a href="#"><div className="font-extrabold text-2xl">sneakers</div></a>
       <div className="flex gap-x-20 items-center">
         <div>
-          <ul className="flex gap-x-5 items-center text-[#e8e7eb] text-xl font-extrabold">
+          <ul className="flex gap-x-5 items-center text-xl font-light cursor-pointer">
             <li>Collection</li>
             <li>Men</li>
             <li>Women</li>
@@ -16,8 +16,8 @@ function Header() {
           </ul>
         </div>
         <div className="flex gap-x-5 items-center">
-          <FontAwesomeIcon icon={faCartShopping} />
-          <img src="" alt="userimage" />
+          <FontAwesomeIcon icon={faCartShopping} className="cursor-pointer	"/>
+          <img src="" alt="userimage" className="cursor-pointer"/>
         </div>
       </div>
     </div>
