@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="flex items-center gap-x-20 px-5 py-5 justify-center border-b-2	">
       <a href="#">
-        <div className="font-extrabold text-2xl">sneakers</div>
+        <div className="font-extrabold text-2xl uppercase">sneakers</div>
       </a>
       <div className="flex gap-x-20 items-center">
         <div>
