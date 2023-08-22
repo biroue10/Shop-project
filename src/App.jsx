@@ -1,11 +1,10 @@
-import { LandingPage } from './pages/LandingPage';
-import { ProductsPage } from './pages/ProductsPage';
-import { ProductDetails } from './pages/ProductDetails';
-import { ShoppingCartPage } from './pages/ShoppingCartPage';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { LandingPage } from "./pages/LandingPage";
+import { ProductsPage } from "./pages/ProductsPage";
+import { ProductDetails } from "./pages/ProductDetails";
+import { ShoppingCartPage } from "./pages/ShoppingCartPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-
   return (
     <Router>
       <Routes>
@@ -15,7 +14,7 @@ function App() {
         <Route path="/cart" element={<ShoppingCartPage />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,5 +1,3 @@
 export const ShoppingCartPage = () => {
-    return (
-        <div>ShoppingCartPage</div>
-    )
-}
+  return <div>ShoppingCartPage</div>;
+};
