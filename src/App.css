@@ -46,3 +46,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+li::after{
+  transition: opacity 300ms, transform 300ms;
+}
+ul > li:hover{
+text-decoration: underline;
+opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
