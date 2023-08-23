@@ -26,7 +26,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/*" element={<ProductsPage />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<ShoppingCartPage />} />
         </Routes>

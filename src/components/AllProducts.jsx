@@ -1,8 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "./ProductCard";
-export const AllProducts = () => {
-  const { data, isLoading, isError } = useQuery(["products"], async () => {
-    const response = await fetch("https://dummyjson.com/products");
+export const AllProducts = ({ category }) => {
+  const apiUrl =
+    category === "all"
+      ? "https://dummyjson.com/products"
+      : `https://dummyjson.com/products/category/${category}`;
+
+  const { data, isLoading, isError } = useQuery([category], async () => {
+    const response = await fetch(apiUrl);
     const data = await response.json();
     return data.products;
   });

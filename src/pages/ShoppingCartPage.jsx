@@ -1,9 +1,10 @@
 
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 export const ShoppingCartPage = () => {
-    const { cartItems } = useCart();
+  const { cartItems, addToCart } = useCart();
   const [total, setTotal] = useState(0);
   useEffect(() => {
     function getTotals() {
@@ -20,20 +21,75 @@ export const ShoppingCartPage = () => {
         <div>
         <h1 className="text-4xl">ShoppingCartPage</h1>
         <div className="mt-8 flex flex-col">
+          <ul role="list" className="-my-6 divide-y divide-gray-200">
 
           {cartItems.map((item) => (
-            <div className="p-4 w-full flex justify-between border-b" key={item.product.id}>
-              <img src={item.product.thumbnail} alt="" className="w-16 h-16 object-center object-cover" />
-              <p >{item.product.title}</p>
-              <p >{item.quantity}</p>
-              <p >{item.product.price}</p>
+            <li key={item.product.id} className="flex py-6">
+              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                <img src={item.product.thumbnail} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
+              </div>
 
-            </div>
+              <div className="ml-4 flex flex-1 flex-col">
+                <div>
+                  <div className="flex justify-between text-base font-medium text-gray-900">
+                    <h3>
+                      <a href="#">Throwback Hip Bag</a>
+                    </h3>
+                    <p className="ml-4">${item.product.price.toFixed(2)}</p>
+                  </div>
+                  <p className="mt-1 text-sm text-gray-500">{item.product.title}</p>
+                </div>
+                <div className="flex flex-1 items-end justify-between text-sm">
+                  <div className="flex items-center text-center space-x-4">
+                    <p className="text-gray-500">Qty </p>
+                    <div className="flex ">
+                      <button
+                        onClick={() => {
+                          // Decrease quantity
+                          const newQuantity = item.quantity - 1;
+                          if (newQuantity >= 0) {
+                            addToCart(item.product, newQuantity);
+                          }
+                        }}
+                        className="w-8 h-8 rounded-l-md bg-gray-100 hover:bg-gray-200 font-bold text-lg text-orange-500"  > - </button>
+                      <p className="w-8 h-8 bg-gray-100 flex items-center justify-center"> {item.quantity} </p>
+                      <button
+                        onClick={() => {
+                          // Increase quantity
+                          const newQuantity = item.quantity + 1;
+                          addToCart(item.product, newQuantity);
+                        }}
+                        className="w-8 h-8 rounded-r-md bg-gray-100 hover:bg-gray-200 font-bold text-lg text-orange-500"  > + </button>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <button type="button" className="font-medium text-orange-600 hover:text-orange-500">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </li>
           ))}
-          <div className="p-4 w-full flex justify-between border-b">
-            <p className="font-bold">Total</p>
-            <p className="font-bold">${total}</p>
+          </ul>
+
+          <div className="p-4 w-full  border-y mt-8">
+            <div className="flex justify-between">
+              <p className="font-bold">Total</p>
+              <p className="font-bold">${total}</p>
           </div>
+            <div className="mt-6">
+              <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-orange-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-700">Checkout</a>
+            </div>
+            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <p >
+                or
+                <Link to={'/products'} className="ml-2 font-medium text-orange-600 hover:text-orange-500">
+                  Continue Shopping
+                  <span aria-hidden="true"> &rarr;</span>
+                </Link>
+              </p>
+            </div>
+          </div>
+
         </div>
 
         </div>

@@ -11,11 +11,21 @@ function Navbar() {
       <div className="flex gap-x-20 items-center">
         <div>
           <ul className="flex gap-x-5 items-center text-xl font-light cursor-pointer">
-            <li className="inline-block relative">Collection</li>
-            <li className="inline-block relative">Men</li>
-            <li className="inline-block relative">Women</li>
-            <li className="inline-block relative">About</li>
-            <li className="inline-block relative">Contact</li>
+            <li className="relative inline-block">
+              <Link to="/products/all">All</Link>
+            </li>
+            <li className="relative inline-block">
+              <Link to="/products/mens-shirts">Men</Link>
+            </li>
+            <li className="relative inline-block">
+              <Link to="/products/womens-dresses">Women</Link>
+            </li>
+            <li className="relative inline-block">
+              <Link to="/products/laptops">Laptops</Link>
+            </li>
+            <li className="relative inline-block">
+              <Link to="/products/groceries">Groceries</Link>
+            </li>
           </ul>
         </div>
         <div className="flex gap-x-5 items-center w-6/12 sm:w-4/12 px-4">
