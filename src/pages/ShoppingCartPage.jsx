@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 export const ShoppingCartPage = () => {
-  const { cartItems, addToCart } = useCart();
+  const { cartItems, setCartItems, addToCart } = useCart();
   const [total, setTotal] = useState(0);
   useEffect(() => {
     function getTotals() {
@@ -17,11 +17,23 @@ export const ShoppingCartPage = () => {
     getTotals()
   }, [cartItems])
 
+  const removeItem = (product) => {
+    const updatedCartItems = cartItems.filter(item => item.product !== product);
+    setCartItems(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+
     return (
         <div>
         <h1 className="text-4xl">ShoppingCartPage</h1>
         <div className="mt-8 flex flex-col">
           <ul role="list" className="-my-6 divide-y divide-gray-200">
+
+            {cartItems.length === 0 && (
+              <div className="flex justify-center">
+                <p className="text-2xl">Your cart is empty</p>
+              </div>
+            )}
 
           {cartItems.map((item) => (
             <li key={item.product.id} className="flex py-6">
@@ -63,7 +75,7 @@ export const ShoppingCartPage = () => {
                     </div>
                   </div>
                   <div className="flex">
-                    <button type="button" className="font-medium text-orange-600 hover:text-orange-500">Remove</button>
+                    <button onClick={() => removeItem(item.product)} type="button" className="font-medium text-orange-600 hover:text-orange-500">Remove</button>
                   </div>
                 </div>
               </div>

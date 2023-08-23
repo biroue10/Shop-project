@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const CartContext = createContext();
 
 export function useCart() {
-  return useContext(CartContext);
+    return useContext(CartContext);
 }
 
 export function CartProvider({ children }) {
@@ -34,12 +34,13 @@ export function CartProvider({ children }) {
 
     };
 
-  const cartValue = {
-    cartItems: cartItems,
-    addToCart,
-  };
+    const cartValue = {
+        cartItems: cartItems,
+        setCartItems: setCartItems,
+        addToCart,
+    };
 
-  return (
-      <CartContext.Provider value={cartValue}>{children}</CartContext.Provider>
-  );
+    return (
+        <CartContext.Provider value={cartValue}>{children}</CartContext.Provider>
+    );
 }
