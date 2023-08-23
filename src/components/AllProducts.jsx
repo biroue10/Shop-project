@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { ProductCard } from "./ProductCard";
 export const AllProducts = () => {
   const { data, isLoading, isError } = useQuery(["products"], async () => {
@@ -12,13 +11,10 @@ export const AllProducts = () => {
   if (isError) return <div>Error loading data</div>;
 
   return (
-    <div>
-      <h1>products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 mt-4">
         {data.map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}
-      </div>
     </div>
   );
 };

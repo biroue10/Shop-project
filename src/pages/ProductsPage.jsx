@@ -1,11 +1,10 @@
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 import { AllProducts } from "../components/AllProducts";
 
 export const ProductsPage = () => {
   return (
     <div>
-      <Header />
-      <h1>ProductsPage</h1>
+      <h1 className="text-4xl">ProductsPage</h1>
       <AllProducts />
     </div>
   );

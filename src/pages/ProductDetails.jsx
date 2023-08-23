@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { useCart } from "../context/CartContext";
-import Header from "../components/Header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 export const ProductDetails = () => {
     const { id } = useParams();
@@ -31,8 +32,7 @@ export const ProductDetails = () => {
     if (isError) return <div>Error loading data</div>;
 
     return (
-        <div className="flex space-x-12">
-            <Header />
+        <div className="flex space-x-12 mt-4">
             <div>
                 <img src={mainImage} className="bg-gray-500 rounded-md shadow w-full h-96 object-center bg-center " alt="" />
                 <div className="flex mt-4 space-x-8">
@@ -63,9 +63,11 @@ export const ProductDetails = () => {
                         <p className="w-12 h-12 bg-gray-200 flex items-center justify-center">{quantity}</p>
                         <button className="w-12 h-12 rounded-r-md bg-gray-200 hover:bg-gray-300 font-bold text-lg text-orange-500" onClick={() => handleQuantityChange(quantity + 1)}>+</button>
                     </div>
-                    <button onClick={handleAddToCart} className="w-full max-w-xs bg-orange-500 rounded-md shadow-md shadow-orange-300 text-white">Add to cart</button>
+                    <button onClick={handleAddToCart} className="flex items-center justify-center space-x-4 w-full max-w-xs bg-orange-500 hover:bg-orange-600 rounded-md shadow-md shadow-orange-300 text-white">
+                    <FontAwesomeIcon icon={faCartShopping} className="cursor-pointer" />    
+                    <span>Add to cart</span>
+                    </button>
                 </div>
-                <Link to={'/cart'} >Cart</Link>
             </div>
         </div>
     )

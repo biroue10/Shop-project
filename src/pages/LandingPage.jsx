@@ -1,4 +1,7 @@
-import Header from "../components/Header";
 export const LandingPage = () => {
-  return <Header />;
+  return (
+    <div>
+      <h1 className="text-4xl">LandingPage</h1>
+    </div>
+  );
 };
