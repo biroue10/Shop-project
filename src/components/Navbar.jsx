@@ -19,7 +19,7 @@ function Navbar() {
           </ul>
         </div>
         <div className="flex gap-x-5 items-center w-6/12 sm:w-4/12 px-4">
-          <Link to='/cart'>
+          <Link to="/cart">
             <FontAwesomeIcon icon={faCartShopping} className="cursor-pointer	" />
           </Link>
           <img

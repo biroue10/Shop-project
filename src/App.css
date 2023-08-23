@@ -3,8 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-li::after{
-  content: '';
+li::after {
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -15,7 +15,7 @@ li::after{
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-ul > li:hover::after{
+ul > li:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
