@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="flex w-full items-center gap-x-20 py-5 justify-between border-b-2	">
-      <a href="#">
+      <Link to={'/products'}>
         <div className="font-extrabold text-2xl uppercase">sneakers</div>
-      </a>
+      </Link>
       <div className="flex gap-x-20 items-center">
         <div>
           <ul className="flex gap-x-5 items-center text-xl font-light cursor-pointer">
