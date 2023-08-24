@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return <footer className="w-full py-8 mt-8">
-    <footer className="bg-white dark:bg-gray-900">
+    <footer className="bg-black dark:bg-gray-900">
       <div className="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
         <Link to={'/products/all'}>
           <div className="font-extrabold text-2xl uppercase text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300">sneakers</div>
@@ -13,7 +13,7 @@ function Footer() {
         <div className="flex ">
           <p className="text-gray-200">Made by
             <a className="text-blue-200 font-mono text-md font-medium " href="https://www.linkedin.com/in/devdhaif/"> @devdhaif</a> &
-            <a className="text-blue-200 font-mono text-md font-medium " href="https://www.linkedin.com/in/issac-biroue/"> @issac-biroue</a>
+            <a className="text-blue-200 font-mono text-md font-medium " href="https://www.linkedin.com/in/isaac-biroue/"> @isaac-biroue</a>
           </p>
 
         </div>
