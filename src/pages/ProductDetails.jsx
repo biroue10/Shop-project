@@ -32,11 +32,11 @@ export const ProductDetails = () => {
     if (isError) return <div>Error loading data</div>;
 
     return (
-        <div className="flex space-x-12 mt-4">
+        <div className="flex flex-col space-x-12 mt-4">
             <div>
                 <img
                     src={mainImage}
-                    className="bg-gray-500 rounded-md shadow w-full h-96 object-center bg-center "
+                    className="bg-gray-500 hidden rounded-md shadow w-full h-96 object-center bg-center "
                     alt=""
                 />
                 <div className="flex mt-4 space-x-8">
