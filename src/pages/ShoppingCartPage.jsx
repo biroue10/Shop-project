@@ -8,11 +8,19 @@ export const ShoppingCartPage = () => {
   const [total, setTotal] = useState(0);
   useEffect(() => {
     function getTotals() {
+      const discountPrice = 0;
+
       let total = 0;
       cartItems.forEach(item => {
-        total += item.product.price * item.quantity;
+        if (item.product.discountPercentage) {
+          total += (item.product.price - (item.product.price * (item.product.discountPercentage / 100))) * item.quantity;
+        }
+        else {
+
+          total += item.product.price * item.quantity;
+        }
       });
-      setTotal(total)
+      setTotal(total.toFixed(2))
     }
     getTotals()
   }, [cartItems])
@@ -45,9 +53,12 @@ export const ShoppingCartPage = () => {
                 <div>
                   <div className="flex justify-between text-base font-medium text-gray-900">
                     <h3>
-                      <a href="#">{item.product.title}</a>
+                      <Link to={`/product/${item.product.id}`}  >{item.product.title}</Link>
                     </h3>
-                    <p className="ml-4">${item.product.price.toFixed(2)}</p>
+                    <div className="ml-4">
+                      <p>${(item.product.price - (item.product.price * (item.product.discountPercentage / 100))).toFixed(2)}</p>
+                      <s className="text-gray-500 text-sm">${(item.product.price).toFixed(2)}</s>
+                    </div>
                   </div>
                   <p className="mt-1 text-sm text-gray-500">{item.product.description}</p>
                 </div>

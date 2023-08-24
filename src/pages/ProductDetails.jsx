@@ -4,7 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 export const ProductDetails = () => {
     const { id } = useParams();
     const { addToCart } = useCart();
@@ -23,6 +26,8 @@ export const ProductDetails = () => {
         setSelectedThumbnail(imageSrc);
     };
     const handleQuantityChange = (newValue) => {
+        if (newValue < 1) return;
+        
         setQuantity(newValue);
     };
     const handleAddToCart = () => {
@@ -32,31 +37,49 @@ export const ProductDetails = () => {
     if (isError) return <div>Error loading data</div>;
 
     return (
-        <div className="flex flex-col space-x-12 mt-4">
+        <div className="flex flex-col lg:flex-row  lg:space-x-12 mt-4 ">
             <div>
                 <img
                     src={mainImage}
-                    className="bg-gray-500 hidden rounded-md shadow w-full h-96 object-center bg-center "
-                    alt=""
+                    className="bg-gray-500 hidden lg:block rounded-md shadow w-full h-96 object-center bg-center "
+                    alt={data.title}
                 />
-                <div className="flex mt-4 space-x-8">
-                    {data.images.map((imageSrc) => (
-                        <img
+                {/** */}
+                <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:hidden "
+                >
+                    {data.images.map((slideContent, index) => (
+                        <SwiperSlide key={slideContent} virtualIndex={index}>
+                            <img
+                                key={slideContent}
+                                src={slideContent}
+                                className={`bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center`}
+                                alt=""
+                                onClick={() => handleThumbnailClick(slideContent)}
+                            />
+                            {/**
+                            */}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                
+                <div className="hidden lg:flex mt-12 rounded outline outline-1 outline-offset-4 px-4 shadow outline-gray-300  space-x-8">
+                {data.images.map((imageSrc) => (
+                    <img
                             key={imageSrc}
                             src={imageSrc}
                             className={`bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center
-                        ${selectedThumbnail === imageSrc
+                            ${selectedThumbnail === imageSrc
                                     ? "outline outline-orange-600 opacity-50 "
                                     : ""
                                 }
-                        `}
-                            alt=""
-                            onClick={() => handleThumbnailClick(imageSrc)}
-                        />
-                    ))}
-                </div>
+                                `}
+                                alt=""
+                                onMouseOver={() => handleThumbnailClick(imageSrc)}
+                                />
+                                ))}
+                                </div>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 mt-12 lg:mt-0 w-full lg:w-auto ">
                 <h3 className="text-orange-500 font-semibold font-serif text-3xl">
                     {data.brand}
                 </h3>

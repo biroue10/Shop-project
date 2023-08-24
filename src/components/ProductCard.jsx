@@ -21,13 +21,21 @@ export const ProductCard = ({ id, title, price, description, discountPercentage,
 
           <Rating rating={rating} />
 
-          <div className="flex justify-between mt-3 item-center">
+          <div className="flex justify-between flex-wrap mt-3 item-center">
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Brand: {brand}</p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">In stock: {stock}</p>
           </div>
-          <div className="flex justify-between mt-3 item-center">
-            <h4 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">${price}</h4>
-            <button onClick={handleAddToCart} className="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Add to Cart</button>
+          {discountPercentage &&
+            <p className="w-fit mt-2 text-sm text-gray-600 dark:text-gray-400 "> Discount:  <span className="text-sm bg-orange-100 rounded shadow shadow-orange-100 text-orange-800 px-2 ml-2">%  {discountPercentage}</span></p>
+          }
+          <div className="mt-3 ">
+            {discountPercentage ?
+              <div className="flex justify-between flex-wrap mt-3 item-center gap-x-2 ">
+                <s className="text-sm text-gray-700 dark:text-gray-200 mt-1">${price}</s>
+                <h4 className="text-lg font-bold text-gray-700 dark:text-gray-200">${(price - (price * (discountPercentage / 100))).toFixed(2)}</h4>
+              </div> : <h4 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">${price}</h4>
+            }
+            <button onClick={handleAddToCart} className=" mt-2 w-full px-4 py-2 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Add to Cart</button>
           </div>
         </div>
       </div>
