@@ -3,6 +3,8 @@ import { ProductCard } from "./ProductCard";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faTruckLoading } from "@fortawesome/free-solid-svg-icons";
+import { Loader } from "./Loader";
+import { Error } from "./Error";
 export const AllProducts = ({ category }) => {
   const [displayCount, setDisplayCount] = useState(20);
   const apiUrl =
@@ -18,8 +20,8 @@ export const AllProducts = ({ category }) => {
   const handleLoadMore = () => {
     setDisplayCount(prevCount => prevCount + 20); // Increment the display count
   };
-  if (isLoading) return <FontAwesomeIcon icon={faSpinner} className="mx-auto container flex items-center text-orange-500  mt-24 w-24 h-24	" />;
-  if (isError) return <div>Error loading data</div>;
+  if (isLoading) return <Loader />
+  if (isError) return <Error />;
 
   const displayedProducts = data.slice(0, displayCount);
 

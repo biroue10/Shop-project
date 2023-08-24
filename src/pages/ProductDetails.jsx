@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Slider } from "../components/Slider";
+import { Loader } from "../components/Loader";
+import { Error } from "../components/Error";
 export const ProductDetails = () => {
     const { id } = useParams();
     const { addToCart } = useCart();
@@ -27,79 +26,36 @@ export const ProductDetails = () => {
     };
     const handleQuantityChange = (newValue) => {
         if (newValue < 1) return;
-        
+
         setQuantity(newValue);
     };
     const handleAddToCart = () => {
         addToCart(data, quantity);
     };
-    if (isLoading) return <div>Loading...</div>;
-    if (isError) return <div>Error loading data</div>;
+    if (isLoading) return <Loader />
+    if (isError) return <Error />
 
     return (
         <div className="flex flex-col lg:flex-row  lg:space-x-12 mt-4 ">
             <div>
-                <img
-                    src={mainImage}
-                    className="bg-gray-500 hidden lg:block rounded-md shadow w-full h-96 object-center bg-center "
-                    alt={data.title}
-                />
-                {/** */}
-                <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:hidden "
-                >
-                    {data.images.map((slideContent, index) => (
-                        <SwiperSlide key={slideContent} virtualIndex={index}>
-                            <img
-                                key={slideContent}
-                                src={slideContent}
-                                className={`bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center`}
-                                alt=""
-                                onClick={() => handleThumbnailClick(slideContent)}
-                            />
-                            {/**
-                            */}
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                
+                <img src={mainImage} className="bg-gray-500 hidden lg:block rounded-md shadow w-full h-96 object-center bg-center " alt={data.title} />
+                <Slider images={data.images} />
                 <div className="hidden lg:flex mt-12 rounded outline outline-1 outline-offset-4 px-4 shadow outline-gray-300  space-x-8">
-                {data.images.map((imageSrc) => (
-                    <img
-                            key={imageSrc}
-                            src={imageSrc}
-                            className={`bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center
-                            ${selectedThumbnail === imageSrc
-                                    ? "outline outline-orange-600 opacity-50 "
-                                    : ""
-                                }
-                                `}
-                                alt=""
-                                onMouseOver={() => handleThumbnailClick(imageSrc)}
-                                />
-                                ))}
-                                </div>
+                    {data.images.map((imageSrc) => (
+                        <img key={imageSrc} src={imageSrc} className={`bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center ${selectedThumbnail === imageSrc ? "outline outline-orange-600 opacity-50 " : ""}     `} alt="" onMouseOver={() => handleThumbnailClick(imageSrc)} />))}
+                </div>
             </div>
             <div className="flex-1 mt-12 lg:mt-0 w-full lg:w-auto ">
-                <h3 className="text-orange-500 font-semibold font-serif text-3xl">
-                    {data.brand}
-                </h3>
-                <h2 className="text-4xl text-gray-800 leading-loose tracking-widest">
-                    {data.title}
-                </h2>
-                <p className="mt-8 text-gray-500 max-w-fit text-sm">
-                    {data.description}
-                </p>
+                <h3 className="text-orange-500 font-semibold font-serif text-3xl"> {data.brand} </h3>
+                <h2 className="text-4xl text-gray-800 leading-loose tracking-widest"> {data.title} </h2>
+                <p className="mt-8 text-gray-500 max-w-fit text-sm"> {data.description} </p>
 
                 <div className="mt-12 flex space-x-8">
                     <div>
-                        <p className="text-2xl font-medium">
-                            ${(data.price - data.discountPercentage).toFixed(2)}
-                        </p>
+                        <p className="text-2xl font-medium"> ${(data.price - data.discountPercentage).toFixed(2)} </p>
                         <s className="text-gray-400">${data.price.toFixed(2)}</s>
                     </div>
-                    <span className="bg-orange-100 text-orange-600 rounded-md font-bold px-2 py-1 h-fit">
-                        %{data.discountPercentage}
-                    </span>
+                    <span className="bg-orange-100 text-orange-600 rounded-md font-bold px-2 py-1 h-fit"> %{data.discountPercentage} </span>
                 </div>
                 <div className="flex mt-8 space-x-4">
                     <div className="flex items-center text-center">
