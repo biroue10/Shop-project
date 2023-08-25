@@ -1,24 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "./ProductCard";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner, faTruckLoading } from "@fortawesome/free-solid-svg-icons";
 import { Loader } from "./Loader";
 import { Error } from "./Error";
-export const AllProducts = ({ category }) => {
-  const [displayCount, setDisplayCount] = useState(20);
-  const apiUrl =
-    category === "all"
-      ? "https://dummyjson.com/products?limit=100"
-      : `https://dummyjson.com/products/category/${category}`;
-
-  const { data, isLoading, isError } = useQuery([category], async () => {
+export const AllProducts = ({ category, query }) => {
+  const [displayCount, setDisplayCount] = useState(15);
+  let apiUrl = "https://dummyjson.com/products";
+  if (category === "all" && query === '') {
+    apiUrl += "?limit=100"
+  }
+  else if (query !== '') {
+    apiUrl += `/search?q=${query}`;
+  }
+  else {
+    apiUrl += `/category/${category}`;
+  }
+  const { data, isLoading, isError } = useQuery([category, query], async () => {
+    console.log("fetched " + apiUrl)
     const response = await fetch(apiUrl);
     const data = await response.json();
     return data.products;
   });
   const handleLoadMore = () => {
-    setDisplayCount(prevCount => prevCount + 20); // Increment the display count
+    setDisplayCount(prevCount => prevCount + 15);
   };
   if (isLoading) return <Loader />
   if (isError) return <Error />;

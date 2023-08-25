@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+import { Logo } from '../components/Logo'
+import ReactLogo from '../assets/react.svg'
 
 function Footer() {
-  return <footer className="w-full py-8 mt-8">
-    <footer className="bg-black dark:bg-gray-900">
+  return (
+    <footer className="w-full  mt-8 bg-black dark:bg-gray-900">
       <div className="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
         <Link to={'/products/all'}>
-          <div className="font-extrabold text-2xl uppercase text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300">sneakers</div>
+          <Logo />
         </Link>
 
         <p className="text-sm text-gray-600 dark:text-gray-300">© Copyright {new Date().getFullYear()}. All Rights Reserved.</p>
@@ -18,8 +20,7 @@ function Footer() {
 
         </div>
       </div>
-    </footer>
-  </footer>;
+    </footer>);
 }
 export default Footer;
 

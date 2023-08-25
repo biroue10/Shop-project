@@ -1,27 +1,35 @@
 import "../../src/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { useCart } from "../context/CartContext";
+import { Logo } from "./Logo";
 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
+  const category = pathname.split("/")[2];
+  const renderP = category === "all";
   const { cartItems } = useCart();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav x-data="{ isOpen: false }" className="relative bg-white shadow dark:bg-gray-900">
+    <nav x-data="{ isOpen: false }" className="relative bg-white shadow dark:bg-gray-900 border-b-[1px] border-gray-600">
       <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
           <Link to={'/'}>
-        <div className="font-extrabold text-2xl uppercase text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300">sneakers</div>
-      </Link>
+            <Logo />
+          </Link>
 
           <div className="flex space-x-4 md:hidden">
+            {renderP && (
+              <p className="text-white">g</p>
+            )}
+            
           <Link to={'/cart'} className="relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" >
              <FontAwesomeIcon icon={faCartShopping} className="cursor-pointer" />
               {cartItems.length > 0 && (

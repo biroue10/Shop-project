@@ -36,7 +36,7 @@ export const ProductDetails = () => {
     if (isError) return <Error />
 
     return (
-        <div className="flex flex-col lg:flex-row  lg:space-x-12 mt-4 ">
+        <div className="flex flex-col lg:flex-row  lg:space-x-12 mt-4 px-4 ">
             <div>
                 <img src={mainImage} className="bg-gray-500 hidden lg:block rounded-md shadow w-full h-96 object-center bg-center " alt={data.title} />
                 <Slider images={data.images} />
@@ -46,14 +46,14 @@ export const ProductDetails = () => {
                 </div>
             </div>
             <div className="flex-1 mt-12 lg:mt-0 w-full lg:w-auto ">
-                <div className="flex ">
+                <div className="flex justify-between">
                     <div>
                         <h3 className="text-gray-800 font-semibold  text-3xl"> {data.brand} </h3>
                         <h2 className="text-4xl text-gray-600 "> {data.title} </h2>
                         <p className="mt-8 text-gray-500 max-w-fit text-sm"> {data.description} </p>
                     </div>
                     <Link to={'/products/all'}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="rounded-full outline outline-2 bg-blue-50  mr-4 text-blue-600 w-8 h-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="rounded-full outline outline-2 bg-blue-50   text-blue-600 w-8 h-8">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </Link>

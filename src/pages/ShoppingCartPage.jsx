@@ -31,16 +31,14 @@ export const ShoppingCartPage = () => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-    return (
-        <div>
-        <h1 className="text-4xl">ShoppingCartPage</h1>
+  return (
         <div className="mt-8 flex flex-col">
           <ul role="list" className="-my-6 divide-y divide-gray-200">
 
             {cartItems.length === 0 && (
               <div className="text-center ">
                 <p className="text-2xl">Your cart is empty</p>
-                <img class="w-full h-full lg:max-w-3xl mx-auto mt-12" src={AddToCartBg} alt="add_to_cart.svg" />
+              <img className="w-full h-full lg:max-w-3xl mx-auto mt-12" src={AddToCartBg} alt="add_to_cart.svg" />
 
               </div>
             )}
@@ -112,8 +110,6 @@ export const ShoppingCartPage = () => {
               </p>
             </div>
           </div>
-
-        </div>
 
         </div>
     )
