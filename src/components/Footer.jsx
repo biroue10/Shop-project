@@ -13,7 +13,7 @@ function Footer() {
         <div className="flex ">
           <p className="text-gray-200">Made by
             <a className="text-blue-200 font-mono text-md font-medium " href="https://www.linkedin.com/in/devdhaif/"> @devdhaif</a> &
-            <a className="text-blue-200 font-mono text-md font-medium " href="https://www.linkedin.com/in/isaac-biroue/"> @isaac-biroue</a>
+            <a className="text-blue-200 font-mono text-md font-medium " href="https://www.linkedin.com/in/issac-biroue/"> @issac-biroue</a>
           </p>
 
         </div>
