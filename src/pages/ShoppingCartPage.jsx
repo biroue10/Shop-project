@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
-
+import AddToCartBg from '../assets/add_to_cart.svg'
 export const ShoppingCartPage = () => {
   const { cartItems, setCartItems, addToCart } = useCart();
   const [total, setTotal] = useState(0);
@@ -38,8 +38,10 @@ export const ShoppingCartPage = () => {
           <ul role="list" className="-my-6 divide-y divide-gray-200">
 
             {cartItems.length === 0 && (
-              <div className="flex justify-center">
+              <div className="text-center ">
                 <p className="text-2xl">Your cart is empty</p>
+                <img class="w-full h-full lg:max-w-3xl mx-auto mt-12" src={AddToCartBg} alt="add_to_cart.svg" />
+
               </div>
             )}
 

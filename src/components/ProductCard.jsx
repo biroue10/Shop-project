@@ -10,11 +10,11 @@ export const ProductCard = ({ id, title, price, description, discountPercentage,
     addToCart({ id, title, price, description, discountPercentage, rating, stock, brand, category, thumbnail }, quantity);
   };
     return (
-      <div className="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-        <Link className="w-1/3 h-auto" to={`/product/${id}`}>
-          <img className="w-full h-full bg-cover object-center" src={thumbnail} alt={title} />
+      <div className="flex flex-col max-w-md overflow-hidden bg-white rounded-lg shadow shadow-gray-900 dark:bg-gray-900">
+        <Link className="w-full" to={`/product/${id}`}>
+          <img className="w-full text-white h-64  bg-cover object-center" src={thumbnail} alt={title} />
         </Link>
-        <div className="w-2/3 p-4 md:p-4 flex flex-col justify-between h-full">
+        <div className="w-full p-4 md:p-4 flex flex-col justify-between h-full">
           <Link to={`/product/${id}`} className="text-xl font-bold text-gray-800 dark:text-white">{title}</Link>
 
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{description}</p>
@@ -30,12 +30,12 @@ export const ProductCard = ({ id, title, price, description, discountPercentage,
           }
           <div className="mt-3 ">
             {discountPercentage ?
-              <div className="flex justify-between flex-wrap mt-3 item-center gap-x-2 ">
+              <div className="flex  flex-wrap mt-3 item-center gap-x-2 ">
                 <s className="text-sm text-gray-700 dark:text-gray-200 mt-1">${price}</s>
                 <h4 className="text-lg font-bold text-gray-700 dark:text-gray-200">${(price - (price * (discountPercentage / 100))).toFixed(2)}</h4>
               </div> : <h4 className="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">${price}</h4>
             }
-            <button onClick={handleAddToCart} className=" mt-2 w-full px-4 py-2 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Add to Cart</button>
+            <button onClick={handleAddToCart} className=" mt-2 w-full px-4 py-2 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-900 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Add to Cart</button>
           </div>
         </div>
       </div>

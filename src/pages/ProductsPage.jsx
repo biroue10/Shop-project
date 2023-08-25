@@ -9,7 +9,6 @@ export const ProductsPage = () => {
   
   return (
     <div>
-      <h1 className="text-4xl">ProductsPage</h1>
       <AllProducts category={category} />
     </div>
   );

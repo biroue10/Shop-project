@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
     <React.Fragment>
       <div className="container mx-auto overflow-hidden">
         <Navbar />
-        <main className="min-h-screen  px-2">{children}</main>
+        <main className="min-h-screen  px-2 md:px-0">{children}</main>
         <Footer />
       </div>
     </React.Fragment>

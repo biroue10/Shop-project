@@ -4,7 +4,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 export const Slider = ({ images }) => {
     return (
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:hidden "
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:hidden h-96 flex flex-col justify-center items-center"
         >
             {images.map((slideContent, index) => (
                 <SwiperSlide
@@ -12,9 +12,8 @@ export const Slider = ({ images }) => {
                     <img
                         key={slideContent}
                         src={slideContent}
-                        className={`mx-auto bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center`}
-                        alt=""
-                        onClick={() => handleThumbnailClick(slideContent)}
+                        className={`mx-auto w-full h-full bg-gray-500 rounded-md shadow  object-center bg-center`}
+                        alt={slideContent}
                     />
                 </SwiperSlide>
             ))}
