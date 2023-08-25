@@ -13,7 +13,7 @@ Follow these steps to get started with Infinity Mart:
 
 2. Navigate to the project directory:
    ```bash
-   cd e-commerce-reac
+   cd e-commerce-react
    ```
 
 3. Install project dependencies using Yarn or npm:
