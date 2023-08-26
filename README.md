@@ -2,7 +2,24 @@
 
 Infinity Mart is a modern e-commerce web application built using React and Vite. This project offers a streamlined setup for React development within the Vite ecosystem, harnessing the power of Hot Module Replacement (HMR) and optimized ESLint rules.
 
+### All products Page :
+ ![Screenshot from 2023-08-26 11-07-09](https://github.com/biroue10/Shop-project/assets/77447520/bcb403ec-1b43-4437-9979-3a7c89bb2b48)
+
+### Category Page :
+![Screenshot from 2023-08-26 11-09-03](https://github.com/biroue10/Shop-project/assets/77447520/b7008b97-03c2-4b93-b952-6174e738e323)
+
+### Search Results Page:
+![Screenshot from 2023-08-26 11-09-17](https://github.com/biroue10/Shop-project/assets/77447520/987aa3c6-6cbc-4ff8-998f-1ced10317b1a)
+
+### Single Product Page :
+![Screenshot from 2023-08-26 11-09-38](https://github.com/biroue10/Shop-project/assets/77447520/b625718f-1521-48b5-9b87-57d3712e9c4d)
+
+### Cart Page :
+![Screenshot from 2023-08-26 11-10-11](https://github.com/biroue10/Shop-project/assets/77447520/d0318b4f-4d88-4c8f-8698-8cfa9000825a)
+
+
 ## Instructions
+
 
 Follow these steps to get started with Infinity Mart:
 
