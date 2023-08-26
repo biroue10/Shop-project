@@ -11,9 +11,11 @@ import { CartProvider } from "./context/CartContext";
 const Layout = ({ children }) => {
   return (
     <React.Fragment>
-      <div className="container mx-auto overflow-hidden ">
-        <Navbar />
-        <main className="min-h-screen  md:px-0">{children}</main>
+      <div>
+        <div className="container mx-auto flex flex-col items-center overflow-hidden ">
+          <Navbar />
+          <main className="min-h-screen  mt-36 md:px-0">{children}</main>
+        </div>
         <Footer />
       </div>
     </React.Fragment>

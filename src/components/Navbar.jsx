@@ -18,7 +18,7 @@ function Navbar() {
   };
 
   return (
-    <nav x-data="{ isOpen: false }" className="relative bg-white shadow dark:bg-gray-900 border-b-[1px] border-gray-600">
+    <nav className="fixed w-screen  z-50 bg-white shadow dark:bg-gray-900 border-b-[1px] border-gray-600">
       <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
           <Link to={'/'}>
@@ -26,10 +26,6 @@ function Navbar() {
           </Link>
 
           <div className="flex space-x-4 md:hidden">
-            {renderP && (
-              <p className="text-white">g</p>
-            )}
-            
           <Link to={'/cart'} className="relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" >
              <FontAwesomeIcon icon={faCartShopping} className="cursor-pointer" />
               {cartItems.length > 0 && (
