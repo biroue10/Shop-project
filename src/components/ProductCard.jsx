@@ -1,16 +1,40 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Rating from "./Rating";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const boxVariant = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
+  hidden: { opacity: 0.5, scale: 0.5 }
+};
+
 export const ProductCard = ({ id, title, price, description, discountPercentage, rating, stock, brand, category, thumbnail }) => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const control = useAnimation();
+  const [ref, inView] = useInView();
 
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, inView]);
   const handleAddToCart = () => {
     addToCart({ id, title, price, description, discountPercentage, rating, stock, brand, category, thumbnail }, quantity);
   };
     return (
-      <div className="flex flex-col max-w-md overflow-hidden bg-white rounded-lg shadow shadow-gray-900 dark:bg-gray-900">
+      <motion.div
+        className="box"
+        ref={ref}
+        variants={boxVariant}
+        initial="hidden"
+        animate={control}
+      >
+        <div className="h-full flex flex-col max-w-md overflow-hidden bg-white rounded-lg shadow shadow-gray-900 dark:bg-gray-900">
         <Link className="w-full" to={`/product/${id}`}>
           <img className="w-full text-white h-64  bg-cover object-center" src={thumbnail} alt={title} />
         </Link>
@@ -39,6 +63,7 @@ export const ProductCard = ({ id, title, price, description, discountPercentage,
           </div>
         </div>
       </div>
+      </motion.div>
   )
 }
 
