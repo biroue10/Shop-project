@@ -4,7 +4,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 export const Slider = ({ images }) => {
     return (
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:hidden h-96 flex flex-col justify-center items-center"
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:hidden h-96 flex w-[95vw] flex-col justify-center items-center"
         >
             {images.map((slideContent, index) => (
                 <SwiperSlide

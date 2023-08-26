@@ -36,17 +36,17 @@ export const ProductDetails = () => {
     if (isError) return <Error />
 
     return (
-        <div className="flex flex-col lg:flex-row  lg:space-x-12 mt-4 px-4 ">
-            <div>
-                <img src={mainImage} className="bg-gray-500 hidden lg:block rounded-md shadow w-full h-96 object-center bg-center " alt={data.title} />
+        <div className="flex flex-col lg:flex-row h-full  lg:space-x-12 lg:mt-8 px-4 ">
+            <div className="w-full h-full lg:w-auto relative ">
                 <Slider images={data.images} />
+                <img src={mainImage} className="bg-gray-500 hidden lg:block rounded-md shadow w-full h-96 object-center bg-center " alt={data.title} />
                 <div className="hidden lg:flex mt-12 rounded outline outline-1 outline-offset-4 px-4 shadow outline-gray-300  space-x-8">
                     {data.images.map((imageSrc) => (
                         <img key={imageSrc} src={imageSrc} className={`bg-gray-500 rounded-md shadow w-32 h-32 object-center bg-center ${selectedThumbnail === imageSrc ? "outline outline-gray-600 opacity-50 " : ""}     `} alt="" onMouseOver={() => handleThumbnailClick(imageSrc)} />))}
                 </div>
             </div>
-            <div className="flex-1 mt-12 lg:mt-0 w-full lg:w-auto ">
-                <div className="flex justify-between">
+            <div className="lg:flex-1 flex flex-col justify-evenly mt-12 lg:mt-0 w-full  lg:w-auto ">
+                <div className="flex  justify-between">
                     <div>
                         <h3 className="text-gray-800 font-semibold  text-3xl"> {data.brand} </h3>
                         <h2 className="text-4xl text-gray-600 "> {data.title} </h2>
